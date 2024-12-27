@@ -19,7 +19,6 @@ const PORT = process.env.PORT || 5000;
 const __dirname = path.resolve();
 
 cloudinary.config({
-<<<<<<< HEAD
 	cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
 	api_key: process.env.CLOUDINARY_API_KEY,
 	api_secret: process.env.CLOUDINARY_API_SECRET,
@@ -27,15 +26,6 @@ cloudinary.config({
 
 // Middlewares
 app.use(express.json({ limit: "50mb" })); // To parse JSON data in the req.body
-=======
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
-
-// Middlewares
-app.use(express.json({ limit: "100mb" })); // To parse JSON data in the req.body
->>>>>>> d4cc1d1 (1- deployment config)
 app.use(express.urlencoded({ extended: true })); // To parse form data in the req.body
 app.use(cookieParser());
 
@@ -47,7 +37,6 @@ app.use("/api/messages", messageRoutes);
 // http://localhost:5000 => backend,frontend
 
 if (process.env.NODE_ENV === "production") {
-<<<<<<< HEAD
 	app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
 	// react app
@@ -57,16 +46,3 @@ if (process.env.NODE_ENV === "production") {
 }
 
 server.listen(PORT, () => console.log(`Server started at http://localhost:${PORT}`));
-=======
-  app.use(express.static(path.join(__dirname, "/frontend/dist")));
-
-  // react app
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
-  });
-}
-
-server.listen(PORT, () =>
-  console.log(`Server started at http://localhost:${PORT}`)
-);
->>>>>>> d4cc1d1 (1- deployment config)
